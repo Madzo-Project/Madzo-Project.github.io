@@ -7,15 +7,13 @@ window.addEventListener("load", function() {
 
     setTimeout(() => {
       loaderWrapper.style.display = "none";
-    }, 500); // Совпадает с transition: 0.5s в CSS
-  }, 1500); // Общее время задержки (лоадер крутится 1.5 секунды)
+    }, 500);
+  }, 1500);
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Создаём случайные вспышки (метеоры)
     setInterval(createMeteor, 3000);
     
-    // Случайные глитчи
     setInterval(randomGlitch, 5000);
 });
 
@@ -23,7 +21,6 @@ function createMeteor() {
     const meteor = document.createElement('div');
     meteor.className = 'meteor';
     
-    // Случайные начальные позиции
     const startX = Math.random() * window.innerWidth;
     const startY = Math.random() * 100;
     
@@ -32,7 +29,6 @@ function createMeteor() {
     
     document.querySelector('.star-field').appendChild(meteor);
     
-    // Удаляем метеор после анимации
     setTimeout(() => {
         meteor.remove();
     }, 2000);
@@ -49,7 +45,6 @@ function randomGlitch() {
     }, 100);
 }
 
-// Добавляем стили для метеоров
 const style = document.createElement('style');
 style.textContent = `
     .meteor {
@@ -88,3 +83,115 @@ const progressInterval = setInterval(() => {
     clearInterval(progressInterval);
   }
 }, 150);
+
+document.addEventListener('DOMContentLoaded', function() {
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  
+  const navLinks = document.querySelectorAll('.nav-link');
+  
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute('href');
+    if (linkPage === currentPage) {
+      link.classList.add('active');
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.time('LoadSingers'); // Начало замера времени
+    
+    const singersData = [
+        {
+            id: "sakire",
+            name: "Byokiutane Sakire",
+            image: "images/sakire.webp"
+        },
+        {
+            id: "dero",
+            name: "Karune Dero", 
+            image: "images/dero.webp"
+        },
+        {
+            id: "teru",
+            name: "Karune Teru",
+            image: "images/teru.webp"
+        },
+        {
+            id: "marie",
+            name: "Marie Yokunonetsu",
+            image: "images/marie.webp"
+        },
+        {
+            id: "mafincheku",
+            name: "Amaine Mafincheku", 
+            image: "images/mafincheku.webp"
+        },
+        {
+            id: "ikoi",
+            name: "Utawararene Ikoi",
+            image: "images/ikoi.webp"
+        },
+        {
+            id: "soyaka",
+            name: "Ishoraji Soyaka", 
+            image: "images/soyaka.webp"
+        },
+        {
+            id: "daichi",
+            name: "Daichi Yoshida",
+            image: "images/daichi.webp"
+        }
+    ];
+
+    const container = document.getElementById('singersContainer');
+    if (!container) return;
+    
+    let html = '';
+    singersData.forEach(singer => {
+        html += `
+            <div class="singer-card ${singer.isFormer ? 'former' : ''}" 
+                 onclick="window.location='${singer.id}_dl.html'">
+                <img src="${singer.image}" alt="${singer.name}" 
+                     loading="lazy" class="singer-image">
+                <div class="singer-info">
+                    <h3>${singer.name}</h3>
+                    ${singer.isFormer ? '<span class="former-badge">Бывший участник</span>' : ''}
+                </div>
+            </div>
+        `;
+    });
+    
+    container.innerHTML = html;
+    console.timeEnd('LoadSingers'); // Конец замера времени
+});
+
+// Загрузка страницы
+document.addEventListener('DOMContentLoaded', function() {
+    // Инициализация аудиоплеера
+    const audioPlayer = document.querySelector('audio');
+    if (audioPlayer) {
+        audioPlayer.volume = 0.7;
+    }
+    
+    // Анимация появления элементов
+    const animateElements = () => {
+        const elements = document.querySelectorAll('.singer-header, .singer-stats, .voice-sample, .voicebanks');
+        elements.forEach((el, index) => {
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 150 * index);
+        });
+    };
+    
+    // Инициализация анимации
+    setTimeout(animateElements, 500);
+    
+    // Отслеживание кликов по кнопкам загрузки
+    document.querySelectorAll('.download-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            console.log(`Скачивание: ${this.previousElementSibling.textContent}`);
+            // Можно добавить analytics или логирование
+        });
+    });
+});

@@ -3,12 +3,12 @@ h1 {
   text-align: center;
   font-size: 35pt;
   color: #d7c8ff;
+  font-weight: bold;
 }
 
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     color: white;
 }
 
@@ -220,4 +220,311 @@ body {
   width: 0%;
   background: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);
   transition: width 0.3s ease;
+}
+
+h3 {
+    font-family: 'WDXL Lubrifont SC', sans-serif;
+    font-size: 30px;
+    color: #baa9eb;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: textGlow 3s infinite alternate;
+}
+
+.site-header {
+  background: linear-gradient(135deg, #1a1a2e 0%, #29163e 100%);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(25, 22, 32, 0.3);
+}
+
+.main-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 15px;
+  position: relative;
+  font-family: 'WDXL Lubrifont SC', sans-serif;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.nav-link.active {
+  background: rgba(127, 95, 179, 0.2);
+  font-weight: bold;
+}
+
+.nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #a94ffe;
+  transition: width 0.3s ease;
+  font-family: 'WDXL Lubrifont SC', sans-serif;
+}
+
+.nav-item:hover::after {
+  width: 100%;
+  font-family: 'WDXL Lubrifont SC', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .nav-item {
+    margin: 5px 0;
+    font-family: 'WDXL Lubrifont SC', sans-serif;
+  }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+.singers-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.singer-card {
+    background: rgb(70, 48, 119);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.singer-card:hover {
+    transform: translateY(-5px);
+}
+
+.singer-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+.singer-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.singer-card.former {
+    position: relative;
+    opacity: 0.8;
+}
+
+.singer-card.former .singer-image {
+    filter: grayscale(50%);
+}
+
+.former-badge {
+    display: inline-block;
+    background: #ff4444;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin-top: 8px;
+}
+
+/* Основные стили */
+body {
+    font-family: 'WDXL Lubrifont SC', sans-serif;
+    color: #e0e0e0;
+    background-color: #0a0a1a;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Стили для профиля певца */
+.singer-profile {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 30px;
+    background: rgba(20, 20, 40, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(106, 27, 154, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+.singer-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.singer-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #6a1b9a;
+    box-shadow: 0 0 20px rgba(106, 27, 154, 0.7);
+}
+
+.singer-info {
+    text-align: center;
+}
+
+.singer-name {
+    font-size: 2.2rem;
+    margin: 0;
+    color: #9c27b0;
+    text-shadow: 0 0 10px rgba(156, 39, 176, 0.5);
+}
+
+.singer-description {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 600px;
+    margin: 10px auto 0;
+}
+
+.singer-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.stat-item {
+    background: rgba(30, 30, 60, 0.6);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.stat-item:hover {
+    transform: translateY(-5px);
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    color: #9c27b0;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.voice-sample {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.voice-sample h2 {
+    color: #6a1b9a;
+    margin-bottom: 15px;
+}
+
+.voicebanks {
+    margin-top: 40px;
+}
+
+.voicebanks h2 {
+    color: #6a1b9a;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.voicebank-item {
+    background: rgba(30, 30, 60, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border-left: 4px solid #9c27b0;
+}
+
+.voicebank-item h3 {
+    margin-top: 0;
+    color: #b39ddb;
+}
+
+.voicebank-item p {
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+.download-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, #6a1b9a, #9c27b0);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.download-btn:hover {
+    background: linear-gradient(135deg, #9c27b0, #6a1b9a);
+    box-shadow: 0 0 15px rgba(156, 39, 176, 0.5);
+}
+
+/* Адаптивность */
+@media (min-width: 768px) {
+    .singer-header {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .singer-info {
+        text-align: left;
+    }
+}
+
+.singers-main h1 {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    animation: textGlow 3s infinite alternate;
 }
